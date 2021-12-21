@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strconv"
+	"strings"
 
 	"aoc-2015/internal/session"
 )
@@ -35,4 +37,18 @@ func fetchOrReadInput(year, day int) []byte {
 
 func ReadString(year, day int) string {
 	return string(fetchOrReadInput(year, day))
+}
+
+func IntegerList(line, sep string) []int64 {
+	input := strings.Trim(line, " \r\n\t")
+	split := strings.Split(input, sep)
+	result := make([]int64, len(split))
+	for index, input := range split {
+		i, err := strconv.ParseInt(input, 10, 64)
+		if err != nil {
+			log.Fatal("Error parsing integer list", err)
+		}
+		result[index] = i
+	}
+	return result
 }
