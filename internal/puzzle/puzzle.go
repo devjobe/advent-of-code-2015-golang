@@ -52,3 +52,13 @@ func IntegerList(line, sep string) []int64 {
 	}
 	return result
 }
+
+func IntegerMatrix(s string, sep string) [][]int64 {
+	input := strings.Trim(s, " \r\n\t")
+	lines := strings.Split(input, "\n")
+	result := make([][]int64, len(lines))
+	for index, line := range lines {
+		result[index] = IntegerList(line, sep)
+	}
+	return result
+}
