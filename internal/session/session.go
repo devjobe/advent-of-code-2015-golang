@@ -25,7 +25,7 @@ func ReadCookie() (string, string, error) {
 	if len(split) != 2 {
 		return "", "", errors.New("unknown aoc cookie format")
 	}
-	return split[0], split[1], nil
+	return strings.Trim(split[0], " \r\n\t"), strings.Trim(split[1], " \r\n\t"), nil
 }
 
 func FetchInput(year int, day int) ([]byte, error) {
