@@ -39,6 +39,11 @@ func ReadString(year, day int) string {
 	return string(fetchOrReadInput(year, day))
 }
 
+func ReadLines(year, day int) []string {
+	input := strings.Trim(ReadString(year, day), " \r\n\t")
+	return strings.Split(input, "\n")
+}
+
 func IntegerList(line, sep string) []int64 {
 	input := strings.Trim(line, " \r\n\t")
 	split := strings.Split(input, sep)
