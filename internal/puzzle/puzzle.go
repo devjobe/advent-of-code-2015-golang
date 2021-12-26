@@ -35,6 +35,10 @@ func fetchOrReadInput(year, day int) []byte {
 	return content
 }
 
+func ReadBytes(year, day int) []byte {
+	return fetchOrReadInput(year, day)
+}
+
 func ReadString(year, day int) string {
 	return string(fetchOrReadInput(year, day))
 }
