@@ -31,11 +31,11 @@ func main() {
 
 	}
 
-	println("Day 07.1:", decoded)
+	println("Day 08.1:", decoded)
 
 	var encoded int
 	for _, line := range input {
 		encoded += 2 + strings.Count(line, "\\") + strings.Count(line, "\"")
 	}
-	println("Day 07.2:", encoded)
+	println("Day 08.2:", encoded)
 }
