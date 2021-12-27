@@ -1,14 +1,13 @@
 package puzzle
 
 import (
+	"aoc-2015/internal/session"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
 	"strconv"
 	"strings"
-
-	"aoc-2015/internal/session"
 )
 
 func fetchAndSave(year, day int, path string) ([]byte, error) {
@@ -46,6 +45,41 @@ func ReadString(year, day int) string {
 func ReadLines(year, day int) []string {
 	input := strings.Trim(ReadString(year, day), " \r\n\t")
 	return strings.Split(input, "\n")
+}
+
+func ReadInt64List(year, day int) []int64 {
+	result := make([]int64, 0, 1024)
+	input := strings.Trim(ReadString(year, day), " \r\n\t")
+	index := 0
+	for index < len(input) {
+		ch := input[index]
+		index += 1
+		neg := false
+		if ch == '-' && index < len(input) {
+			neg = true
+			ch = input[index]
+			index += 1
+		}
+		if ch >= '0' && ch <= '9' {
+			var val int64
+			for {
+				val = val*10 + int64(ch-'0')
+				if index < len(input) {
+					ch = input[index]
+					index += 1
+					if ch >= '0' && ch <= '9' {
+						continue
+					}
+					break
+				}
+			}
+			if neg {
+				val = -val
+			}
+			result = append(result, val)
+		}
+	}
+	return result
 }
 
 func IntegerList(line, sep string) []int64 {
