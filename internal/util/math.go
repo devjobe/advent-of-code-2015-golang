@@ -39,3 +39,11 @@ func Min(array ...int64) int64 {
 	}
 	return min
 }
+
+func Sum(array ...int64) int64 {
+	var sum int64
+	for _, n := range array {
+		sum += n
+	}
+	return sum
+}
